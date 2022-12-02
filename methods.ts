@@ -22,6 +22,19 @@ export class Vorm extends Database {
   }
 
   /**
+   * Removes a user from a tenant
+   * @param tenantId - Tenant ID
+   * @param userId - User ID
+   */
+  async bigquery(sql: string): Promise<Res> {
+    return await this.dbRes({
+      sql,
+      db: 'bigquery',
+      isWrite: false,
+    });
+  }
+
+  /**
    * Returns the user with the given email
    * @param email - User email
    * @returns The user record
